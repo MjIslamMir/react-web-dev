@@ -1,34 +1,16 @@
-import React from 'react'
-import './App.css'
-//Class based Componet are stateful components
-//Counter App
-class App extends React.Component{
-  state={
-    val:0
-  }
-  incrementCounter=()=>{
-    this.setState({
-      val:this.state.val+1
-    })
-  }
-  decrementCounter=()=>{
-    this.setState({
-      val:this.state.val-1
-    })
-  }
-  reset=()=>{
-    this.setState({
-      val:0
-    })
-  }
-  render(){
-    return (<div>
-    <h1>Counter Value :: {this.state.val}</h1>
-    <button onClick={this.incrementCounter}>increment Counter</button><br/>
-    <button onClick={this.decrementCounter}>Decrement Counter</button><br/>
-    <button onClick={this.reset}>Reset Counter</button>
-    </div> )
+import React, { Component } from 'react';
 
-  }
+class Myname extends Component {
+    
+    render() {
+        console.log(this.state)//state is an object private to the component and is by default null  
+        console.log(this.props)
+        return (
+            <div>
+              <h1 style={{fontSize:"30px", color:"red"}}>My name is {this.props.data}</h1>  
+            </div>
+        );
+    }
 }
-export default App;
+
+export default Myname;
