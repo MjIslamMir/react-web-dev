@@ -1,40 +1,36 @@
 import React from 'react'
 import './App.css'
+import Myname from './components/Myname'
 //Class based Componet are stateful components
+//Counter App
 class App extends React.Component{
   state={
-    val:5
+    val:0
   }
-  obj={
-    val:10
-  }
-  increment=()=>{
-    this.obj.val+=1;
-    console.log(this.obj.val);
-  }
-  //we can not update the state like obj but use setState
-  updateState=()=>{
+  incrementCounter=()=>{
     this.setState({
-      val:this.state.val+20 //state update enforces re-render call shouldUpdateComponenet() method to be true
+      val:this.state.val+1
     })
-    console.log(this.state.val);
-    //debugger
+    //setInterval(this.incrementCounter,2000)
+
   }
-  greeting=(user)=> {
-    console.log(`hello welcome to React  ${user}`);
+  decrementCounter=()=>{
+    this.setState({
+      val:this.state.val-1
+    })
+  }
+  reset=()=>{
+    this.setState({
+      val:0
+    })
   }
   render(){
     return (<div>
-      <h1>This is react class component</h1>
-      <h2>Object value :{this.obj.val}</h2>
-      {/* on click the Increment Object value is not updated in the UI */}
-      <h2>State value :{this.state.val}</h2>
-      {/* on click the Increment state value is  updated in the UI */}
-      <button onClick={()=>this.greeting("Mujahidul Islam")}>Greet User Details</button>
-      <br/>
-      <button onClick={this.increment}>Increment Object Value</button>
-      <br/>
-      <button onClick={this.updateState}>Update State</button>
+    <Myname data="Mujahi dul Islam"/>
+    <h1>Counter Value :: {this.state.val}</h1>
+    <button onClick={this.incrementCounter}>increment Counter</button><br/>
+    <button onClick={this.decrementCounter}>Decrement Counter</button><br/>
+    <button onClick={this.reset}>Reset Counter</button>
     </div> )
 
   }
